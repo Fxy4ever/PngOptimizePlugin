@@ -1,0 +1,53 @@
+apply plugin: 'java-library'
+
+apply plugin: 'kotlin'
+
+apply plugin: 'groovy'
+
+apply plugin: 'maven'
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+buildscript {
+
+    repositories {
+        maven {
+            url = uri("./repo")
+        }
+    }
+    dependencies {
+        classpath 'com-fxy-optimize:PngCompressAndWebp:1.0.0'//这里要和repo里面的路径文件夹对上，不让无法运行
+    }
+}
+
+apply plugin: 'com.fxy.optimize'
+
+optimizeOption {
+    rootLocation  '/Users/fxy/Android/redrock/GradlePluginDemo'
+}
+
+
+
+
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+//publish to local directory
+
+def versionName = "1.0.0"
+group "com-fxy-optimize"
+version versionName
+
+uploadArchives{ //当前项目可以发布到本地文件夹中
+    repositories {
+        mavenDeployer {
+            repository(url: uri('./repo')) //定义本地maven仓库的地址
+        }
+    }
+}
