@@ -14,3 +14,4 @@ optimizeOption {
 //    filterName = ["ic_launcher.png","ic_launcher_background.png"] //过滤文件的名称
 }
 ```
+PS：练手项目，请勿用于商业用途
