@@ -1,2 +1,2 @@
-include ':app', ':PngCompressAndWebp'
+include ':app', ':optimizePlugin'
 rootProject.name='GradlePluginDemo'

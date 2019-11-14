@@ -18,7 +18,7 @@ class OptimizeUtil {
                 searchDir(file.absolutePath)
             }
         }else{
-            if(root.name.endsWith(".png")){
+            if(root.name.endsWith(".png") && !root.name.contains(".9.png")){
                 OptimizeTask.imgList << root
             }
         }

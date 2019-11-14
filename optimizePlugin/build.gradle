@@ -26,7 +26,15 @@ buildscript {
 apply plugin: 'com.fxy.optimize'
 
 optimizeOption {
-    rootLocation  '/Users/fxy/Android/redrock/OptimizePhotoPlugin'
+    rootLocation  './OptimizePhotoPlugin'
+    appIconName  'ic_launcher.png'
+    appRoundIconName = 'ic_launcher_round.png'
+    optimizeOption 'both'
+    compressStrategy 'lossy'
+    webpStrategy 'lossy'
+    compressMinQuality 90
+    compressMaxQuality 100
+//    filterName = ["ic_launcher.webp","ic_launcher_background.webp"]
 }
 
 

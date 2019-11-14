@@ -18,4 +18,6 @@ class OptimizeOptionExtension{
 
     //webp
     String webpStrategy = Constants.LOSSY//默认有损压缩
+
+    def filterName = null
 }

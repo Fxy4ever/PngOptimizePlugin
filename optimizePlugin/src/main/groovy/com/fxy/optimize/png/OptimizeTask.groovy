@@ -4,8 +4,6 @@ import com.fxy.optimize.png.compress.ICompress
 import com.fxy.optimize.png.config.Constants
 import com.fxy.optimize.png.webp.IWebp
 import org.gradle.api.DefaultTask
-import org.gradle.api.tasks.Input
-import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.TaskAction
 
 class OptimizeTask extends DefaultTask{
@@ -22,6 +20,7 @@ class OptimizeTask extends DefaultTask{
     def compressStrategy = Constants.LOSSY
     String appIconName
     String appRoundIconName
+    def filterName = []
 
     IWebp iWebp
     ICompress iCompress
@@ -42,6 +41,7 @@ class OptimizeTask extends DefaultTask{
         compressQualityMin = data.compressMinQuality
         compressQualityMax = data.compressMaxQuality
         webpStrategy = data.webpStrategy
+        filterName = data.filterName
 
         OptimizeUtil.checkParams(minSdk,compressQualityMin,compressQualityMax,
                 convertStrategy,webpStrategy,compressStrategy,
@@ -58,7 +58,16 @@ class OptimizeTask extends DefaultTask{
         iWebp = ToolFactory.getWebPTool(webpStrategy)
         iCompress = ToolFactory.getCompressTool(compressStrategy)
 
-        project.logger.error "==========Optimize Option=========="
+        if(filterName != null){
+            for(int i = 0; i < imgList.size(); i++){
+                def path = imgList.get(i)
+                if(filterName.contains(path.name)){//过滤不压缩的文件
+                    imgList.remove(path)
+                }
+            }
+        }
+
+        project.logger.error "============================Optimize Option==========================="
         project.logger.error "convertStrategy : $convertStrategy"
         project.logger.error "compressQualityMin : $compressQualityMin"
         project.logger.error "compressQualityMax : $compressQualityMax"
