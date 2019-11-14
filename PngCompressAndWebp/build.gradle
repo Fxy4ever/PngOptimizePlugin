@@ -26,7 +26,7 @@ buildscript {
 apply plugin: 'com.fxy.optimize'
 
 optimizeOption {
-    rootLocation  '/Users/fxy/Android/redrock/GradlePluginDemo'
+    rootLocation  '/Users/fxy/Android/redrock/OptimizePhotoPlugin'
 }
 
 
