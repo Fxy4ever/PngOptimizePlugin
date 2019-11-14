@@ -1,7 +1,16 @@
 # PngOptimizePlugin
-简单插件
-执行gradle compressAndWebp命令一键转换项目中的png到webp
+用于学习用途的Gradle插件，压缩png并转化为webp，减少包体积大小。依赖自己建立的本地repo来运行插件。
+
+## 使用
+### 1、建立本地仓库
+```shell
+gradle uploadArchives
+```
+
+### 2、在子模块的build.gradle里添加
 ```groovy
+apply plugin: 'com.fxy.optimize'
+
 optimizeOption {
     rootLocation  './OptimizePhotoPlugin' //文件夹的根目录
     appIconName  'ic_launcher.png' 
@@ -14,4 +23,9 @@ optimizeOption {
 //    filterName = ["ic_launcher.png","ic_launcher_background.png"] //过滤文件的名称
 }
 ```
-PS：练手项目，请勿用于商业用途
+
+### 3、运行
+```
+gradle compressAndWebp
+```
+## PS：练手项目，请勿用于商业用途
