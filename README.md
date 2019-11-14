@@ -1,7 +1,7 @@
 # PngOptimizePlugin
 简单插件
 执行gradle compressAndWebp命令一键转换项目中的png到webp
-```
+```groovy
 optimizeOption {
     rootLocation  './OptimizePhotoPlugin' //文件夹的根目录
     appIconName  'ic_launcher.png' 
